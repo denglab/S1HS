@@ -87,6 +87,11 @@ class HumanBurdenSettings:
 
 def read_metadata(path: os.PathLike[str] | str) -> pd.DataFrame:
     """Read a metadata table and normalize HC columns for grouping."""
+    path = Path(path)
+    if not path.exists() and path.suffix != ".gz":
+        gz_path = Path(str(path) + ".gz")
+        if gz_path.exists():
+            path = gz_path
     df = pd.read_csv(path, low_memory=False)
     for col in ["HC5", "HC10", "HC20", "HC50"]:
         if col in df.columns:
@@ -704,7 +709,7 @@ def run_cli(args: argparse.Namespace) -> None:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", default=str(DATA_PATH / "metadata_training_testing.csv"), help="Metadata CSV.")
+    parser.add_argument("--input", default=str(DATA_PATH / "metadata_training_testing.csv.gz"), help="Metadata CSV or CSV.GZ.")
     parser.add_argument("--output-dir", default=None, help="Optional directory for CSV result tables.")
     parser.add_argument("--cluster-col", default="HC50")
     parser.add_argument("--node-col", default="curated_source_region")

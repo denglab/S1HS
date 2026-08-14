@@ -32,9 +32,15 @@ current_path = os.path.dirname(os.path.abspath(__file__))
 SRC_ROOT = os.path.dirname(current_path)
 DATA_PATH = os.path.join(SRC_ROOT, "data")
 
+
+def data_file(filename):
+    path = os.path.join(DATA_PATH, filename)
+    gz_path = path + ".gz"
+    return gz_path if os.path.exists(gz_path) else path
+
 ### Comparing innate diversity (AUC) with sampling completeness
 # Nodes with at least 150 available isolates after HC5-level de-redundancy were included
-df_ecdf_HC5 = pd.read_csv(os.path.join(DATA_PATH, "ECDF_HC5.csv"))
+df_ecdf_HC5 = pd.read_csv(data_file("ECDF_HC5.csv"))
 
 # Compute rarefied metrics
 res_ecdf_HC5, res_auc_HC5 = rarefied_ecdf(

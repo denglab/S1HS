@@ -5,7 +5,13 @@ current_path = os.path.dirname(os.path.abspath(__file__))
 SRC_ROOT = os.path.dirname(current_path)
 DATA_PATH = os.path.join(SRC_ROOT, "data")
 
-df_all_training_testing = pd.read_csv(os.path.join(DATA_PATH, "metadata_training_testing.csv"))
+def data_file(filename):
+    path = os.path.join(DATA_PATH, filename)
+    gz_path = path + ".gz"
+    return gz_path if os.path.exists(gz_path) else path
+
+
+df_all_training_testing = pd.read_csv(data_file("metadata_training_testing.csv"))
 
 ## Single cosine similarity network
 G_original_single_cosine, G_mean_single_cosine, G_consensus_single_cosine, sim_matrix_single_cosine, feature_matrix_single_cosine, partitions_single_cosine, partition_consensus_single_cosine, modularity_scores_single_cosine, modularity_score_mean_single_cosine, modularity_score_consensus_single_cosine, classes, coassign_matrix_partitions_df_single_cosine, coassign_matrix_bootstraps_df_single_cosine= build_similarity_network(
@@ -161,7 +167,7 @@ plt.show()
 
 
 ### Allelic distance matrix
-df_distance_matrix = pd.read_csv(os.path.join(DATA_PATH, "HC50_distance_matrix.csv"), index_col=0)
+df_distance_matrix = pd.read_csv(data_file("HC50_distance_matrix.csv"), index_col=0)
 df_distance_matrix.index = df_distance_matrix.index.astype(float)
 df_distance_matrix.columns = df_distance_matrix.columns.astype(float)
 

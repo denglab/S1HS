@@ -7,7 +7,13 @@ current_path = os.path.dirname(os.path.abspath(__file__))
 SRC_ROOT = os.path.dirname(current_path)
 DATA_PATH = os.path.join(SRC_ROOT, "data")
 
-df_all_training_testing = pd.read_csv(os.path.join(DATA_PATH, "metadata_training_testing.csv"))
+def data_file(filename):
+    path = os.path.join(DATA_PATH, filename)
+    gz_path = path + ".gz"
+    return gz_path if os.path.exists(gz_path) else path
+
+
+df_all_training_testing = pd.read_csv(data_file("metadata_training_testing.csv"))
 
 # Consensus network by bootstrapping (HC50/0.35/0.5/0.5) -- cosine
 Graphs_boot_cosine, G_mean_cosine, G_consensus_cosine, sim_matrix_cosine, feature_matrix_cosine, partitions_cosine, partition_consensus_cosine, modularity_scores_cosine, modularity_score_mean_cosine, modularity_score_consensus_cosine, classes, coassign_matrix_partitions_df_cosine, coassign_matrix_bootstraps_df_cosine = build_similarity_network(
@@ -175,4 +181,3 @@ node_scores_en = compute_node_specialism_generalism(
     top_HC_pct=[1, 5, 10, 25, 50],
 )
 print(node_scores_en)
-

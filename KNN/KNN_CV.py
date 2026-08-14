@@ -29,7 +29,7 @@ TEST_TYPES = ['Poultry', 'Bovine', 'Swine']
 data_parquet = os.path.join(
     DATA_PATH, 'KNN_training_cgMLST.parquet')
 metadata = os.path.join(
-    DATA_PATH, "KNN_training_metadata.txt")
+    DATA_PATH, "KNN_training_metadata.txt.gz")
 
 print(f"Loading {data_parquet}")
 df = pd.read_parquet(data_parquet)

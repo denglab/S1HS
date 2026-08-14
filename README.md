@@ -14,12 +14,12 @@ This repository contains the analysis code and supporting data for the manuscrip
 
 The scripts expect input files in `data/` by default. The key committed files are:
 
-- `metadata_training_testing.csv`: main isolate metadata table with HC assignments, curated source labels, KNN predictions, and trust/distance fields.
-- `ECDF_HC5.csv`: precomputed closest-distance table used by diversity/coverage analysis.
-- `HC50_distance_matrix.csv`: HC50 allelic-distance matrix used for phylogenetic/diversity calculations.
-- `source_attribution_all_nodes.csv`: source-attribution summary table used for node-level analyses.
-- `KNN_training_cgMLST.parquet`, `KNN_training_metadata.txt`, `KNN_external_cgMLST.csv`, `KNN_external_metadata.txt`: KNN pan-serotype source attribution model inputs and external prediction inputs.
-- `metadata_Fig6.csv`: figure-specific metadata.
+- `metadata_training_testing.csv.gz`: main isolate metadata table with HC assignments, curated source labels, KNN predictions, and trust/distance fields.
+- `ECDF_HC5.csv.gz`: precomputed closest-distance table used by diversity/coverage analysis.
+- `HC50_distance_matrix.csv.gz`: HC50 allelic-distance matrix used for phylogenetic/diversity calculations.
+- `source_attribution_all_nodes.csv.gz`: source-attribution summary table used for node-level analyses.
+- `KNN_training_cgMLST.parquet`, `KNN_training_metadata.txt.gz`, `KNN_external_cgMLST.csv.gz`, `KNN_external_metadata.txt.gz`: KNN pan-serotype source attribution model inputs and external prediction inputs.
+- `metadata_Fig6.csv.gz`: figure-specific metadata.
 
 
 ## Environment
@@ -31,6 +31,8 @@ pip install numpy pandas scipy statsmodels scikit-learn networkx matplotlib seab
 ```
 
 Some network plotting functions may require optional graph-layout packages available in the original analysis environment.
+
+Tabular text files in `data/` are stored as `.gz` files to keep the repository smaller. Pandas reads these files directly, so decompression is not required before running the scripts. `KNN_training_cgMLST.parquet` and `HC50_distance_matrix.csv.gz` are configured for Git LFS because they remain large after compression.
 
 ## Common Commands
 
@@ -88,5 +90,4 @@ python KNN/KNN_pred_nBPS.py
 - first nearest-neighbor index for both food-animal and wild-animal checks
 
 If `animal_type` is already present in the metadata, the helper reuses it by default. Otherwise, it applies the distance/trust threshold logic to the stored KNN distance fields.
-
 

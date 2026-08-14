@@ -26,7 +26,7 @@ TEST_TYPES = ['Poultry', 'Bovine', 'Swine']
 data_parquet = os.path.join(
     DATA_PATH, 'KNN_training_cgMLST.parquet')
 metadata = os.path.join(
-    DATA_PATH, "KNN_training_metadata.txt")
+    DATA_PATH, "KNN_training_metadata.txt.gz")
 
 print(f"Loading {data_parquet}")
 df = pd.read_parquet(data_parquet)
@@ -66,10 +66,10 @@ clf = WeightKNeighborsClassifier(
         n_jobs=4)
 clf.fit(X, y, additional_labels=barcodes) # load the data, set up the BallTree
 
-test_meta = os.path.join(DATA_PATH, test_file+'_metadata.txt')
+test_meta = os.path.join(DATA_PATH, test_file+'_metadata.txt.gz')
 df_meta = pd.read_csv(test_meta, low_memory = False, sep = '\t',index_col='Barcode')
 df_meta['Source'] = df_meta['Source Type'] 
-test_csv = os.path.join(DATA_PATH, test_file+'_cgMLST.csv')
+test_csv = os.path.join(DATA_PATH, test_file+'_cgMLST.csv.gz')
 df_test = pd.read_csv(test_csv, low_memory = False)
 df_test = df_test.rename(columns={'Source Type':'Source'})
 feature_cols = X.columns
