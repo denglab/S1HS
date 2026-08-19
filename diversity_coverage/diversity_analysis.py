@@ -1,3 +1,11 @@
+"""Diversity/coverage analysis from a precomputed ECDF input table.
+
+This script starts from data/ECDF_HC5.csv.gz, which must already contain one
+row per isolate with its source, HC50 lineage, and precomputed closest HC5-level
+distance. It does not recompute pairwise closest distances from raw genomes or
+from the HC50 distance matrix.
+"""
+
 ## AUC,ECDF,Good's C, and Obs/Chao1 
 ### Quantify and visualize how completely each source has been sampled
 # 1. Lineage-based coverage – how many distinct genetic lineages (clusters) have already been represented in the dataset
@@ -33,14 +41,43 @@ SRC_ROOT = os.path.dirname(current_path)
 DATA_PATH = os.path.join(SRC_ROOT, "data")
 
 
-def data_file(filename):
+REQUIRED_ECDF_COLUMNS = {"Source", "HC50", "Closest distance"}
+
+
+def data_file(filename, required=False):
     path = os.path.join(DATA_PATH, filename)
     gz_path = path + ".gz"
-    return gz_path if os.path.exists(gz_path) else path
+    if os.path.exists(gz_path):
+        return gz_path
+    if os.path.exists(path):
+        return path
+    if required:
+        raise FileNotFoundError(
+            f"Required input {filename!r} was not found in {DATA_PATH}. "
+            "The diversity/coverage workflow expects the precomputed ECDF_HC5.csv.gz table."
+        )
+    return path
+
+
+def load_precomputed_ecdf_hc5():
+    input_path = data_file("ECDF_HC5.csv", required=True)
+    df = pd.read_csv(input_path)
+    missing = REQUIRED_ECDF_COLUMNS - set(df.columns)
+    if missing:
+        raise ValueError(
+            f"{input_path} is missing required columns: {sorted(missing)}. "
+            "Expected the precomputed ECDF table with Source, HC50, and Closest distance."
+        )
+    if df.empty:
+        raise ValueError(f"{input_path} is empty.")
+    if pd.to_numeric(df["Closest distance"], errors="coerce").notna().sum() == 0:
+        raise ValueError(f"{input_path} has no numeric values in 'Closest distance'.")
+    print(f"Loaded precomputed diversity/coverage input: {input_path} ({len(df):,} rows)")
+    return df
 
 ### Comparing innate diversity (AUC) with sampling completeness
 # Nodes with at least 150 available isolates after HC5-level de-redundancy were included
-df_ecdf_HC5 = pd.read_csv(data_file("ECDF_HC5.csv"))
+df_ecdf_HC5 = load_precomputed_ecdf_hc5()
 
 # Compute rarefied metrics
 res_ecdf_HC5, res_auc_HC5 = rarefied_ecdf(

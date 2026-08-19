@@ -3112,3 +3112,50 @@ def find_triangles_with_nodes(triangles, nodes):
     nodes_set = set(nodes)
     matching_triangles = [tri for tri in triangles if any(node in nodes_set for node in tri)]
     return matching_triangles
+
+
+MANUSCRIPT_TRIANGLE_ALLOWED_SOURCES = [
+    "animal_feed",
+    "poultry",
+    "bovine",
+    "equine",
+    "swine",
+    "wild_animal",
+    "water_southeast",
+    "fruit_vegetable",
+]
+
+
+def filter_manuscript_supported_triangles(
+    supported_triangle_summary_df: pd.DataFrame,
+    min_bootstrap_supported_rate: float = 0.75,
+    allowed_best_source_nodes=None,
+    excluded_supported_sources=("human",),
+) -> pd.DataFrame:
+    """
+    Apply the final manuscript filter used after the full triangle screen.
+
+    This mirrors the sandbox notebook: retain non-human supported sources whose
+    best source is in the allowed source list and whose bootstrap-supported rate
+    is greater than 0.75. With the submitted data this leaves six triangles.
+    """
+    if allowed_best_source_nodes is None:
+        allowed_best_source_nodes = MANUSCRIPT_TRIANGLE_ALLOWED_SOURCES
+
+    required = {
+        "supported_source",
+        "best_bootstrap_supported_rate",
+        "best_source_node",
+    }
+    missing = required - set(supported_triangle_summary_df.columns)
+    if missing:
+        raise ValueError(f"Missing required triangle-summary columns: {sorted(missing)}")
+
+    return supported_triangle_summary_df[
+        ~supported_triangle_summary_df["supported_source"].isin(excluded_supported_sources)
+        & (
+            supported_triangle_summary_df["best_bootstrap_supported_rate"].isna()
+            | (supported_triangle_summary_df["best_bootstrap_supported_rate"] > min_bootstrap_supported_rate)
+        )
+        & supported_triangle_summary_df["best_source_node"].isin(allowed_best_source_nodes)
+    ].copy().reset_index(drop=True)

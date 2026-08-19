@@ -1,4 +1,2 @@
 data/KNN_training_cgMLST.parquet filter=lfs diff=lfs merge=lfs -text
 data/HC50_distance_matrix.csv.gz filter=lfs diff=lfs merge=lfs -text
-data/HC50_distance_matrix.csv filter=lfs diff=lfs merge=lfs -text
-data/KNN_external_cgMLST.csv filter=lfs diff=lfs merge=lfs -text

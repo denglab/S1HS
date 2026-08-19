@@ -1,3 +1,12 @@
+"""Demo/sensitivity KNN run for non-BPS cases.
+
+This script deliberately uses fixed-size, seeded subsamples of the training and
+non-BPS query records so it can run quickly and reproducibly as a sensitivity
+check. It is not the manuscript-facing full external prediction path; use
+KNN_pred_BPS.py for the full external prediction workflow and KNN_CV.py for
+cross-validation.
+"""
+
 import sys
 import os
 import seaborn as sns
@@ -18,7 +27,16 @@ pd.options.display.max_columns = 999
 warnings.simplefilter(action='ignore', category=DataConversionWarning)
 warnings.simplefilter(action="ignore", category=UserWarning)
 sns.set_theme("notebook", style="whitegrid", font="sans-serif", font_scale=1.5, color_codes=True, rc=None)
-np.random.seed(1127825)
+DEMO_RANDOM_SEED = 1127825
+DEMO_TRAIN_SAMPLE_N = 10000
+DEMO_TEST_SAMPLE_N = 1000
+
+np.random.seed(DEMO_RANDOM_SEED)
+print(
+    "Running KNN_pred_nBPS.py as a demo/sensitivity script with "
+    f"{DEMO_TRAIN_SAMPLE_N} training rows and {DEMO_TEST_SAMPLE_N} non-BPS query rows "
+    f"sampled using random_state={DEMO_RANDOM_SEED}."
+)
 
 TRAIN_TYPES = ['Poultry', 'Bovine', 'Swine']
 TEST_TYPES = ['Poultry', 'Bovine', 'Swine']
@@ -30,7 +48,9 @@ metadata = os.path.join(
 
 print(f"Loading {data_parquet}")
 df = pd.read_parquet(data_parquet)
-df = df.sample(n=10000, random_state=1127825)  # Adjust n as needed
+if len(df) < DEMO_TRAIN_SAMPLE_N:
+    raise ValueError(f"Requested {DEMO_TRAIN_SAMPLE_N} demo training rows, but only {len(df)} are available.")
+df = df.sample(n=DEMO_TRAIN_SAMPLE_N, random_state=DEMO_RANDOM_SEED)
 
 df_meta = pd.read_csv(metadata,  delimiter="\t", index_col=0, low_memory=False)
 df_new = df[df['Source'].isin(TRAIN_TYPES)].copy()
@@ -66,7 +86,9 @@ clf = WeightKNeighborsClassifier(
 clf.fit(X, y, additional_labels=barcodes) # load the data, set up the BallTree
 
 df_test = df[~df['Source'].isin(TRAIN_TYPES)].copy()
-df_test = df_test.sample(n=1000, random_state=1127825) 
+if len(df_test) < DEMO_TEST_SAMPLE_N:
+    raise ValueError(f"Requested {DEMO_TEST_SAMPLE_N} demo query rows, but only {len(df_test)} are available.")
+df_test = df_test.sample(n=DEMO_TEST_SAMPLE_N, random_state=DEMO_RANDOM_SEED)
 
 X_test = df_test[X.columns]
 X_test = X_test.values
@@ -94,5 +116,5 @@ df_out = pd.concat([df_meta,df_query],axis=1,join='inner')
 columns = [col for col in df_out.columns if col not in ['Source', 'Trust']] + ['Source', 'Trust']
 df_out = df_out[columns]
 df_out['Trust'] = df_out['Trust'].round(3)
-outfile = os.path.basename(metadata).split('.')[0]+"_pred.csv"
+outfile = os.path.basename(metadata).split('.')[0] + "_nBPS_demo_sensitivity_pred.csv"
 df_out.to_csv(outfile)

@@ -270,6 +270,59 @@ triangles_major_zoonotic = find_triangles_with_nodes(triangles, ["animal_feed",
     "wild_animal",])
 print(triangles_major_zoonotic)
 
+### Full triangle/motif screen used for manuscript source-support analysis
+screen_result = screen_triangles_for_sources(
+    df=df_all_training_testing,
+    triangles=triangles,
+    run_bootstrap=True,
+    n_boot=500,
+    random_state=186,
+    bootstrap_frac_range=(1.0, 1.0),
+    bootstrap_min_total_per_node=1,
+    bootstrap_stability_threshold=0.75,
+    max_residual=0.35,
+    base_min_delta=0.15,
+    min_fraction=0.50,
+    min_gap=0.05,
+    require_size_filter=False,
+    source_richness_top_n=10,
+)
+all_candidate_results_df = screen_result["all_candidate_results_df"]
+all_triangle_summary_df = screen_result["all_triangle_summary_df"]
+supported_triangle_summary_df = screen_result["supported_triangle_summary_df"]
+filtered_supported_triangle_summary_df = filter_manuscript_supported_triangles(
+    supported_triangle_summary_df,
+    min_bootstrap_supported_rate=0.75,
+)
+
+print("All candidate rows:", all_candidate_results_df.shape)
+print("All triangle summaries:", all_triangle_summary_df.shape)
+print("Supported triangles:", supported_triangle_summary_df.shape)
+print("Retained manuscript triangles:", filtered_supported_triangle_summary_df.shape)
+print(
+    filtered_supported_triangle_summary_df[
+        [
+            "triangle_index",
+            "triangle",
+            "supported_source",
+            "best_source_node",
+            "best_node_a",
+            "best_node_b",
+            "best_original_cosine",
+            "best_residual_cosine",
+            "best_delta_cosine",
+            "best_delta_fraction",
+            "gap_to_second",
+            "best_bootstrap_supported_rate",
+        ]
+    ].to_string(index=False)
+)
+if len(filtered_supported_triangle_summary_df) != 6:
+    print(
+        "WARNING: manuscript inputs retained six triangles in the sandbox notebook; "
+        f"this run retained {len(filtered_supported_triangle_summary_df)}."
+    )
+
 ### Overlapping triangles that establsiehd bidirectional edge between poultry and animal feed
 # subset specified rows and columns from sim_matrix_single_cosine
 subset_nodes = ["animal_feed", "poultry", "companion_animal", "human"]

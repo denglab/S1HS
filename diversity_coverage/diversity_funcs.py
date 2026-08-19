@@ -83,6 +83,13 @@ def rarefied_ecdf(
     ci=(2.5, 97.5),
     min_dist_points=5
 ):
+    """
+    Compute rarefied ECDF/AUC and coverage metrics from a precomputed table.
+
+    The input must already contain a closest-distance column for each isolate;
+    this function does not derive nearest-neighbor distances from raw genomes or
+    from the HC50 distance matrix.
+    """
     rng = np.random.default_rng(random_seed)
     xs = np.arange(0, max_d + 1)
     auc_mask = xs <= auc_dmax
