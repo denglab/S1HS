@@ -5,6 +5,7 @@ This repository contains the analysis code and supporting data for the manuscrip
 ## Repository Layout
 
 - `data/`: input data used by the scripts.
+- `metadata_curation/`: rule-based cleaning and source-category curation for isolate metadata.
 - `diversity_coverage/`: diversity/coverage analysis, including rarefaction, ECDF, AUC, Good's coverage, and sampling-completeness visualizations.
 - `network/`: network construction and analyses, including source-similarity network construction, edge/source-direction analyses, and animal-feed association tests.
 - `centrality/`: node centrality analysis/null-model testing using Dirichlet-multinomial null models for network centrality metrics.
@@ -35,6 +36,14 @@ Some network plotting functions may require optional graph-layout packages avail
 Tabular text files in `data/` are stored as `.gz` files to keep the repository smaller. Pandas reads these files directly, so decompression is not required before running the scripts. `KNN_training_cgMLST.parquet` and `HC50_distance_matrix.csv.gz` are configured for Git LFS because they remain large after compression.
 
 ## Common Commands
+
+Curate sample-source labels in any version of a tab-separated metadata file:
+
+```bash
+python metadata_curation/curate_source.py data/<metadata-file>.tsv
+```
+
+The script retains U.S. records and assigns broad `curated_source` labels by combining IFSAC categories with host, epidemiological, and free-text isolation-source metadata. The output is written beside the input with `.USA.curated_sources` added to the filename; use `--output` to choose a different path.
 
 Run the diversity/coverage analysis workflow:
 
@@ -93,4 +102,3 @@ python KNN/KNN_pred_BPS.py
 - first nearest-neighbor index for both food-animal and wild-animal checks
 
 If `animal_type` is already present in the metadata, the helper reuses it by default. Otherwise, it applies the distance/trust threshold logic to the stored KNN distance fields.
-
