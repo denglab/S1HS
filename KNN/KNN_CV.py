@@ -29,13 +29,14 @@ TEST_TYPES = ['Poultry', 'Bovine', 'Swine']
 data_parquet = os.path.join(
     DATA_PATH, 'KNN_training_cgMLST.parquet')
 metadata = os.path.join(
-    DATA_PATH, "KNN_training_metadata.txt.gz")
+    DATA_PATH, "metadata_training_testing.csv.gz")
 
 print(f"Loading {data_parquet}")
 df = pd.read_parquet(data_parquet)
 
 print(df['Source'].value_counts())
-df_meta = pd.read_csv(metadata,  delimiter="\t", index_col=0, low_memory=False)
+df_meta = pd.read_csv(metadata, index_col=0, low_memory=False)
+df_meta = df_meta[['Source']]
 df_new = df[df['Source'].isin(TRAIN_TYPES)].copy()
 print(df_new.shape)
 
@@ -126,8 +127,6 @@ y_pred = [cat_codes[x] for x in test_query_df['Prediction']]
 test_query_df['Prediction label'] = y_pred
 test_query_df['Match'] = test_query_df['Label'] == test_query_df['Prediction']
 output = pd.concat([df_meta,fold_df,test_query_df],axis=1,join='inner')
-columns = [col for col in output.columns if col not in ['Source', 'Trust']] + ['Source', 'Trust']
-output = output[columns]
 output['Trust'] = output['Trust'].round(3)
-outfile = os.path.basename(metadata).split('.')[0]+"_CV.csv"
+outfile = os.path.basename(data_parquet).split('.')[0]+"_CV.csv"
 output.to_csv(outfile)
