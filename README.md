@@ -10,7 +10,7 @@ This repository contains the analysis code and supporting data for the manuscrip
 - `network/`: network construction and analyses, including source-similarity network construction and parameter grid search, edge/source-direction analyses, and animal-feed association tests.
 - `centrality/`: node centrality analysis/null-model testing using Dirichlet-multinomial null models for network centrality metrics.
 - `KNN/`: KNN pan-serotype source attribution model, cross-validation, prediction scripts, and helper utilities.
-- `metadata_curation/`: lexical analysis categorized isolates into nodes (isolation source categories).
+- `metadata_curation/`: lexical analysis-based categorization of isolates into nodes (isolation source categories).
 
 
 ## Data Files
