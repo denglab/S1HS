@@ -1,9 +1,8 @@
 """Utilities for KNN-based source-attribution subsets.
 
-The manuscript notebooks classify human isolates into food-animal, wild-animal,
-and generalist groups before re-running downstream burden analyses. This module
-keeps that logic in a reusable place so scripts do not have to copy notebook
-cells.
+This module classifies human isolates into food-animal, wild-animal, and
+generalist groups for downstream burden analyses, providing reusable logic
+across analysis scripts
 """
 
 from __future__ import annotations
