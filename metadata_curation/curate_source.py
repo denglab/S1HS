@@ -1,7 +1,7 @@
 """Curate source labels for U.S. isolate metadata.
 
-The rules combine IFSAC categories, host names, epidemiological types, and
-free-text isolation sources into broader source groups used by the analyses.
+The source-curation rules assign isolates to broader source groups using the publicly available NCBI Pathogen 
+Detection metadata fields IFSAC_category, host, isolation_source, source_type, and epi_type,
 """
 
 import argparse
