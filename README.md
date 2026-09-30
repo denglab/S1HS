@@ -5,12 +5,11 @@ This repository contains the analysis code and supporting data for the manuscrip
 ## Repository Layout
 
 - `data/`: input data used by the scripts.
-- `metadata_curation/`: rule-based cleaning and source-category curation for isolate metadata.
+- `metadata_curation/`: rule-based cleaning and source-category curation for isolate metadata and definition of network nodes.
 - `diversity_coverage/`: diversity/coverage analysis, including rarefaction, ECDF, AUC, Good's coverage, and sampling-completeness visualizations.
 - `network/`: network construction and analyses, including source-similarity network construction and parameter grid search, edge/source-direction analyses, and animal-feed association tests.
 - `centrality/`: node centrality analysis/null-model testing using Dirichlet-multinomial null models for network centrality metrics.
 - `KNN/`: KNN pan-serotype source attribution model, cross-validation, prediction scripts, and helper utilities.
-- `metadata_curation/`: lexical analysis-based categorization of isolates into nodes (isolation source categories).
 
 
 ## Data Files
