@@ -1,6 +1,6 @@
 # S1HS Submission Code
 
-This repository contains the analysis code and supporting data for the manuscript entitled "System-scale genomic surveillance resolves the eco-epidemiological landscape of Salmonella" (aka S1HS). The code is organized around four analysis areas: diversity/coverage analysis, network construction and analyses, node centrality analysis/null-model testing, and KNN pan-serotype source attribution.
+This repository contains the analysis code and supporting data for the manuscript entitled "System-scale genomic surveillance resolves the eco-epidemiological landscape of Salmonella" (aka S1HS). The code is organized around five analysis areas: metadata curation (node definition), diversity/coverage analysis, network construction and analyses, node centrality analysis/null-model testing, and KNN pan-serotype source attribution.
 
 ## Repository Layout
 
@@ -10,6 +10,8 @@ This repository contains the analysis code and supporting data for the manuscrip
 - `network/`: network construction and analyses, including source-similarity network construction and parameter grid search, edge/source-direction analyses, and animal-feed association tests.
 - `centrality/`: node centrality analysis/null-model testing using Dirichlet-multinomial null models for network centrality metrics.
 - `KNN/`: KNN pan-serotype source attribution model, cross-validation, prediction scripts, and helper utilities.
+- `metadata_curation/`: lexical analysis categorized isolates into nodes (isolation source categories).
+
 
 ## Data Files
 
