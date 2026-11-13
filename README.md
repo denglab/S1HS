@@ -8,7 +8,7 @@ This repository contains the analysis code and supporting data for the manuscrip
 - `metadata_curation/`: rule-based cleaning and source-category curation for isolate metadata and definition of network nodes.
 - `diversity_coverage/`: diversity/coverage analysis, including rarefaction, ECDF, AUC, Good's coverage, and sampling-completeness visualizations.
 - `network/`: network construction and analyses, including source-similarity network construction and parameter grid search, edge/source-direction analyses, and animal-feed association tests.
-- `centrality/`: node centrality and generalism analyses; `centrality/role_stability/` contains the Figure 4b bootstrap node-role analysis.
+- `centrality/`: node centrality and generalism analyses; `centrality/role_stability/` contains the bootstrap node-role stability analysis.
 - `KNN/`: KNN pan-serotype source attribution model, cross-validation, prediction scripts, and helper utilities.
 
 
@@ -91,7 +91,7 @@ Run node centrality and generalism analyses:
 python centrality/centrality_analysis.py
 ```
 
-Run the Figure 4b bootstrap node-role analysis:
+Run bootstrap node-role stability analysis:
 
 ```bash
 python3.11 -m venv ~/.venvs/s1hs-role-stability
