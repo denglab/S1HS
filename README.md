@@ -91,7 +91,7 @@ Run node centrality and generalism analyses:
 python centrality/centrality_analysis.py
 ```
 
-Run the Figure 4b bootstrap node-role analysis in a separate environment (Python 3.11):
+Run the Figure 4b bootstrap node-role analysis:
 
 ```bash
 python3.11 -m venv ~/.venvs/s1hs-role-stability
