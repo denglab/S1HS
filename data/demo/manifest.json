@@ -1,0 +1,40 @@
+{
+  "seed": 1127825,
+  "network_sources": [
+    "animal_feed",
+    "companion_animal",
+    "equine",
+    "fruit_and_vegetable",
+    "food_production_env_pacific",
+    "water_pacific",
+    "rodents",
+    "poultry",
+    "bovine",
+    "human"
+  ],
+  "network_sampling": "Up to 200 rows per source, after dropping missing source/HC50",
+  "knn_sampling": "300 rows per training class; 30 testing rows; no replacement",
+  "source_files": [
+    "data/metadata_training_testing.csv.gz",
+    "data/KNN_training_cgMLST.parquet",
+    "data/KNN_testing_cgMLST.parquet"
+  ],
+  "purpose": "Small execution examples; not manuscript estimates or accuracy benchmarks.",
+  "files": {
+    "network_metadata.csv.gz": {
+      "rows": 1896,
+      "columns": 3,
+      "sha256": "cc424d7a1d15c4e18e618bb458c38ad81d5af1fd25821dd17500515984f82d1a"
+    },
+    "knn_training.csv.gz": {
+      "rows": 900,
+      "columns": 3005,
+      "sha256": "1706f9a33f9cf6de85fa2f72980cb9a2e9b0d18905e2285f55f5bb1db0477c56"
+    },
+    "knn_queries.csv.gz": {
+      "rows": 30,
+      "columns": 3005,
+      "sha256": "a03e54df190b0ffd85a07a45dfd01d0ed029f1d71e8f12abe7b9340926f97a8e"
+    }
+  }
+}

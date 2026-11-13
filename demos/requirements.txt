@@ -1,0 +1,17 @@
+numpy
+pandas
+scipy
+scikit-learn>=1.5,<1.7
+networkx
+matplotlib
+seaborn
+tqdm
+python-louvain
+igraph
+leidenalg
+scikit-bio
+dill
+jupyterthemes
+h5py
+psutil
+torch
