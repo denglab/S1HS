@@ -96,24 +96,15 @@ Run the Figure 4b bootstrap node-role analysis:
 ```bash
 python3.11 -m venv ~/.venvs/s1hs-role-stability
 source ~/.venvs/s1hs-role-stability/bin/activate
-python -m pip install -r centrality/role_stability/requirements-executed.txt jupyterlab nbconvert
+python -m pip install -r centrality/role_stability/requirements-executed.txt jupyterlab
 python -m ipykernel install --user --name s1hs-role-stability --display-name "S1HS role stability"
 cd centrality/role_stability
 python -m jupyterlab centrality_role_stability.ipynb
 ```
 
-Select the **S1HS role stability** kernel and run all cells. Alternatively, from `centrality/role_stability/`, execute the notebook without opening JupyterLab:
+Select the **S1HS role stability** kernel and run all cells. Using the bundled inputs, the analysis assesses role stability for 38 nodes across 1,000 bootstrap datasets, each with 500 inner resamples to reconstruct the consensus network. Roles are reassigned in each dataset, and role and non-retention frequencies are summarized across all datasets.
 
-```bash
-python -m jupyter nbconvert --to notebook --execute centrality_role_stability.ipynb \
-  --ExecutePreprocessor.kernel_name=s1hs-role-stability \
-  --ExecutePreprocessor.timeout=-1 \
-  --output centrality_role_stability.executed.ipynb
-```
-
-The workflow uses the bundled `inputs/` snapshot: 125,582 isolates across 59 source nodes. It evaluates all 38 originally classified nodes using **1,000 outer bootstrap datasets**, each reconstructed with **500 independent within-source inner resamples**. Role thresholds are recalculated in every replicate. Four role frequencies plus non-retention are reported using all 1,000 datasets as the denominator.
-
-Results and resumable checkpoints are written to `centrality/role_stability/outputs/<fingerprint>/`. Main outputs include `tables/role_frequencies_percent.csv`, `tables/role_recovery.csv`, `tables/centrality_summary.csv`, and `figures/Fig4b_role_stability.png` (also SVG). Four workers are used by default; adjust `WORKERS` for available resources. The notebook verifies the original baseline before running and stops on numerical failures. See [the detailed workflow instructions](centrality/role_stability/README.md) for inputs, environment caveats, resuming, and plot regeneration.
+Tables, the Figure 4b heatmap, and resumable checkpoints are saved under `centrality/role_stability/outputs/<fingerprint>/`. Matching checkpoints are reused when rerunning the notebook.
 
 Return to the repository root (`cd ../..`) before running the following commands.
 
