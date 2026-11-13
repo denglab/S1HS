@@ -28,7 +28,7 @@ The scripts expect input files in `data/` by default. The key committed files ar
 
 ### Operating system and tested versions
 
-The demos were tested on **macOS 26.5.1 (build 25F80), Apple Silicon (arm64)**. The network demo used **Python 3.13.2**, and the KNN reservoir-attribution demo used **Python 3.11.8**. The node role stability workflow was also validated with Python 3.13.2, using archived checkpoints and three freshly recomputed replicates. Linux and Windows have not been tested for this release; installation commands below use a macOS/Linux shell.
+The demos were tested on macOS 26.5.1 (build 25F80), Apple Silicon (arm64). The network demo used Python 3.13.2, and the KNN reservoir-attribution demo used Python 3.11.8. Linux and Windows have not been tested for this release; installation commands below use a macOS/Linux shell.
 
 ### Software dependencies
 
@@ -57,13 +57,13 @@ The following versions were present in the successful demo runs. A dash means th
 
 Install demo dependencies with `demos/requirements.txt`. scikit-learn is constrained to `>=1.5,<1.7` because the KNN implementation uses its internal neighbor classes. Other demo dependencies are not pinned, so a new installation may differ from the tested environments. In the network test environment, pandas imported as 2.3.1 although its installed distribution metadata reported 2.2.3; the table reports the imported version.
 
-Additional workflow dependencies include **statsmodels** (0.14.2 in the KNN environment; 0.14.5 in the network environment) for association analyses and **pyarrow** (14.0.2 and 24.0.0, respectively) for the full Parquet datasets and demo-data regeneration. Their presence does not imply that every full-data workflow was rerun during demo validation.
+Additional workflow dependencies include statsmodels (0.14.2 in the KNN environment; 0.14.5 in the network environment) for association analyses and pyarrow (14.0.2 and 24.0.0, respectively) for the full Parquet datasets and demo-data regeneration. Their presence does not imply that every full-data workflow was rerun during demo validation.
 
-The node role stability workflow's pinned versions, including Pillow and Jupyter kernel packages, are in `centrality/role_stability/requirements-executed.txt`; its validation environment also used **IPython 9.13.0**. JupyterLab is needed only to open that notebook interactively and was not part of the command-line validation. Full-network `sfdp` plots additionally require Graphviz and PyGraphviz (1.14 was installed in the network environment); those layouts were not exercised by the demos, and no tested Graphviz version is claimed.
+The node role stability workflow's pinned versions, including Pillow and Jupyter kernel packages, are in `centrality/role_stability/requirements-executed.txt`; its validation environment also used IPython 9.13.0. JupyterLab is needed only to open that notebook interactively and was not part of the command-line validation. Full-network `sfdp` plots additionally require Graphviz and PyGraphviz (1.14 was installed in the network environment); those layouts were not exercised by the demos, and no tested Graphviz version is claimed.
 
 ### Hardware
 
-**No non-standard hardware or GPU is required.** Both demos run on a standard desktop CPU; PyTorch is imported by shared KNN utilities, but the demo does not use GPU acceleration. Four CPU cores and 8 GB RAM are a practical starting configuration for the small bundled demos, not a measured minimum. Full-data analyses may require more memory. The node role stability workflow defaults to four CPU workers, adjustable through `WORKERS` in the notebook.
+No non-standard hardware or GPU is required. Both demos run on a standard desktop CPU; PyTorch is imported by shared KNN utilities, but the demo does not use GPU acceleration. Four CPU cores and 8 GB RAM are a practical starting configuration for the small bundled demos, not a measured minimum. Full-data analyses may require more memory. The node role stability workflow defaults to four CPU workers, adjustable through `WORKERS` in the notebook.
 
 ## Installation guide
 
@@ -96,7 +96,7 @@ Tabular text files in `data/` are compressed as `.gz`; pandas reads them directl
 
 ### Typical installation time
 
-Allow approximately **5–20 minutes** to create the environment and install demo dependencies on a typical desktop with broadband internet and prebuilt Python package wheels available. This is a planning estimate, not a measured clean-install benchmark. It excludes installing Python/Git, downloading the full Git LFS datasets, and running analyses. Slow downloads or packages that require compilation can take longer.
+Allow approximately 5–20 minutes to create the environment and install demo dependencies on a typical desktop with broadband internet and prebuilt Python package wheels available. This is a planning estimate, not a measured clean-install benchmark. It excludes installing Python/Git, downloading the full Git LFS datasets, and running analyses. Slow downloads or packages that require compilation can take longer.
 
 ## Common Commands
 
@@ -164,7 +164,7 @@ cd centrality/role_stability
 python -m jupyterlab centrality_role_stability.ipynb
 ```
 
-Select the **S1HS role stability** kernel and run all cells. Using the bundled inputs, the analysis assesses role stability for 38 nodes across 1,000 bootstrap datasets, each with 500 inner resamples to reconstruct the consensus network. Roles are reassigned in each dataset, and role and non-retention frequencies are summarized across all datasets.
+Select the S1HS role stability kernel and run all cells. Using the bundled inputs, the analysis assesses role stability for 38 nodes across 1,000 bootstrap datasets, each with 500 inner resamples to reconstruct the consensus network. Roles are reassigned in each dataset, and role and non-retention frequencies are summarized across all datasets.
 
 Tables, the node role stability heatmap, and resumable checkpoints are saved under `centrality/role_stability/outputs/<fingerprint>/`. Matching checkpoints are reused when rerunning the notebook.
 
@@ -216,7 +216,7 @@ The demo constructs a cosine-similarity network using 100 stratified bootstrap i
 - `network.png`: a network visualization using a seeded spring layout.
 - `run_summary.json`: dataset size, network size, and runtime.
 
-**Expected desktop runtime:** usually under one minute after installation; approximately **6 seconds** in the local macOS test, including imports and figure export. Results and timing can vary with software versions and hardware.
+**Expected desktop runtime:** usually under one minute after installation; approximately 6 seconds in the local macOS test, including imports and figure export. Results and timing can vary with software versions and hardware.
 
 ### KNN reservoir attribution
 
@@ -238,7 +238,7 @@ The demo fits the study's weighted KNN classifier with 11 neighbors and predicts
 
 Recorded query sources are not restricted to the three training classes; this demo is not an accuracy benchmark. Predictions from this reduced training set should not be substituted for the full-data analysis.
 
-**Expected desktop runtime:** usually under one minute after installation; approximately **14 seconds** in the local macOS test, including imports and file loading. No GPU is required.
+**Expected desktop runtime:** usually under one minute after installation; approximately 14 seconds in the local macOS test, including imports and file loading. 
 
 Both commands accept `--output-dir PATH` to choose another output location. Reusing an output directory overwrites demo output files.
 
