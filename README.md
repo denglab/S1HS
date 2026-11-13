@@ -1,6 +1,6 @@
 # S1HS Submission Code
 
-This repository contains the analysis code and supporting data for the manuscript entitled "Mapping the eco-epidemiological landscape of Salmonella across the United Sates food system" (aka Salmonella One Health surveillance, S1HS). The code is organized around five analysis areas: metadata curation (node definition), diversity/coverage analysis, network construction and analyses, node centrality analysis/null-model testing, and KNN pan-serotype source attribution.
+This repository contains the analysis code and supporting data for the manuscript entitled "Mapping the eco-epidemiological landscape of Salmonella across the United Sates food system" (aka Salmonella One Health surveillance, S1HS). The code is organized around five analysis areas: metadata curation (node definition), diversity/coverage analysis, network construction and analyses, node centrality and bootstrap role-stability analysis, and KNN pan-serotype source attribution.
 
 ## Repository Layout
 
@@ -8,7 +8,7 @@ This repository contains the analysis code and supporting data for the manuscrip
 - `metadata_curation/`: rule-based cleaning and source-category curation for isolate metadata and definition of network nodes.
 - `diversity_coverage/`: diversity/coverage analysis, including rarefaction, ECDF, AUC, Good's coverage, and sampling-completeness visualizations.
 - `network/`: network construction and analyses, including source-similarity network construction and parameter grid search, edge/source-direction analyses, and animal-feed association tests.
-- `centrality/`: node centrality analysis/null-model testing using Dirichlet-multinomial null models for network centrality metrics.
+- `centrality/`: node centrality and generalism analyses; `centrality/role_stability/` contains the Figure 4b bootstrap node-role analysis.
 - `KNN/`: KNN pan-serotype source attribution model, cross-validation, prediction scripts, and helper utilities.
 
 
@@ -38,13 +38,24 @@ Tabular text files in `data/` are stored as `.gz` files to keep the repository s
 
 ## Common Commands
 
-Curate sample-source labels in any version of a tab-separated metadata file:
+Run these commands from the repository root.
+
+Curate sample-source labels in a tab-separated NCBI Pathogen Detection metadata file (replace `metadata.tsv` with your input filename):
 
 ```bash
-python metadata_curation/curate_source.py data/<metadata-file>.tsv
+python metadata_curation/curate_source.py data/metadata.tsv
 ```
 
-The script retains U.S. records and assigns broad `curated_source` labels by combining IFSAC categories with host, epidemiological, and free-text isolation-source metadata. The output is written beside the input with `.USA.curated_sources` added to the filename; use `--output` to choose a different path.
+The script retains U.S. records and assigns broad `curated_source` labels by combining IFSAC categories with host, epidemiological, and free-text isolation-source metadata. By default, this example writes `data/metadata.USA.curated_sources.tsv`.
+
+Gzip-compressed input is also supported. To choose the output path explicitly:
+
+```bash
+python metadata_curation/curate_source.py data/metadata.tsv.gz \
+  --output results/metadata.USA.curated_sources.tsv.gz
+```
+
+The script creates the output directory if needed and compresses output files ending in `.gz`.
 
 Run the diversity/coverage analysis workflow:
 
@@ -74,11 +85,37 @@ python network/animal_feed_analysis.py \
   --output-dir results/animal_feed
 ```
 
-Run node centrality analysis/null-model testing:
+Run node centrality and generalism analyses:
 
 ```bash
 python centrality/centrality_analysis.py
 ```
+
+Run the Figure 4b bootstrap node-role analysis in a separate environment (Python 3.11):
+
+```bash
+python3.11 -m venv ~/.venvs/s1hs-role-stability
+source ~/.venvs/s1hs-role-stability/bin/activate
+python -m pip install -r centrality/role_stability/requirements-executed.txt jupyterlab nbconvert
+python -m ipykernel install --user --name s1hs-role-stability --display-name "S1HS role stability"
+cd centrality/role_stability
+python -m jupyterlab centrality_role_stability.ipynb
+```
+
+Select the **S1HS role stability** kernel and run all cells. Alternatively, from `centrality/role_stability/`, execute the notebook without opening JupyterLab:
+
+```bash
+python -m jupyter nbconvert --to notebook --execute centrality_role_stability.ipynb \
+  --ExecutePreprocessor.kernel_name=s1hs-role-stability \
+  --ExecutePreprocessor.timeout=-1 \
+  --output centrality_role_stability.executed.ipynb
+```
+
+The workflow uses the bundled `inputs/` snapshot: 125,582 isolates across 59 source nodes. It evaluates all 38 originally classified nodes using **1,000 outer bootstrap datasets**, each reconstructed with **500 independent within-source inner resamples**. Role thresholds are recalculated in every replicate. Four role frequencies plus non-retention are reported using all 1,000 datasets as the denominator.
+
+Results and resumable checkpoints are written to `centrality/role_stability/outputs/<fingerprint>/`. Main outputs include `tables/role_frequencies_percent.csv`, `tables/role_recovery.csv`, `tables/centrality_summary.csv`, and `figures/Fig4b_role_stability.png` (also SVG). Four workers are used by default; adjust `WORKERS` for available resources. The notebook verifies the original baseline before running and stops on numerical failures. See [the detailed workflow instructions](centrality/role_stability/README.md) for inputs, environment caveats, resuming, and plot regeneration.
+
+Return to the repository root (`cd ../..`) before running the following commands.
 
 Run KNN pan-serotype source attribution cross-validation:
 

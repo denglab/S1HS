@@ -1,0 +1,1038 @@
+{
+  "classes": [
+    "animal_feed",
+    "aquatic_animal",
+    "bird",
+    "camelid",
+    "companion_animal",
+    "equine",
+    "bsaaos",
+    "fruit_and_vegetable",
+    "goat_sheep",
+    "grains",
+    "herbs",
+    "nuts",
+    "production_env_produce",
+    "seasoning",
+    "seeds",
+    "soil_appalachian",
+    "soil_southeast",
+    "soil_pacific",
+    "soil_corn_belt",
+    "soil_northeast",
+    "soil_na",
+    "plant_based_low_water_activity_food",
+    "wild_animal",
+    "beans",
+    "confectionery",
+    "dairy",
+    "food_production_env_pacific",
+    "food_production_env_mountain",
+    "food_production_env_southern_plains",
+    "food_production_env_corn_belt",
+    "food_production_env_northeast",
+    "food_production_env_appalachian",
+    "food_production_env_na",
+    "food_production_env_southeast",
+    "food_production_env_lake_states",
+    "food_production_env_northern_plains",
+    "food_production_env_delta_states",
+    "water_northeast",
+    "water_southeast",
+    "water_pacific",
+    "water_mountain",
+    "water_appalachian",
+    "sewage_hi",
+    "water_lake_states",
+    "water_corn_belt",
+    "water_northern_plains",
+    "water_southern_plains",
+    "water_na",
+    "forest",
+    "multi_ingredient_other",
+    "multi_ingredient_pork_beef_dairy",
+    "multi_ingredient_poultry",
+    "rodents",
+    "root_underground",
+    "rte",
+    "poultry",
+    "bovine",
+    "swine",
+    "human"
+  ],
+  "k": 5354,
+  "baseline_roles": {
+    "animal_feed": "Global Connector",
+    "aquatic_animal": "Peripheral/Local",
+    "companion_animal": "Global Connector",
+    "equine": "Broker/Bridge",
+    "fruit_and_vegetable": "Peripheral/Local",
+    "grains": "Peripheral/Local",
+    "herbs": "Peripheral/Local",
+    "nuts": "Peripheral/Local",
+    "production_env_produce": "Peripheral/Local",
+    "soil_northeast": "Peripheral/Local",
+    "dairy": "Peripheral/Local",
+    "food_production_env_pacific": "Peripheral/Local",
+    "food_production_env_mountain": "Broker/Bridge",
+    "food_production_env_southern_plains": "Core Influencer",
+    "food_production_env_corn_belt": "Peripheral/Local",
+    "food_production_env_northeast": "Broker/Bridge",
+    "food_production_env_appalachian": "Broker/Bridge",
+    "food_production_env_na": "Peripheral/Local",
+    "food_production_env_southeast": "Core Influencer",
+    "food_production_env_lake_states": "Broker/Bridge",
+    "food_production_env_northern_plains": "Peripheral/Local",
+    "water_northeast": "Broker/Bridge",
+    "water_southeast": "Peripheral/Local",
+    "water_pacific": "Peripheral/Local",
+    "water_appalachian": "Broker/Bridge",
+    "sewage_hi": "Peripheral/Local",
+    "water_northern_plains": "Peripheral/Local",
+    "water_southern_plains": "Peripheral/Local",
+    "water_na": "Peripheral/Local",
+    "forest": "Peripheral/Local",
+    "multi_ingredient_other": "Core Influencer",
+    "multi_ingredient_poultry": "Core Influencer",
+    "rodents": "Core Influencer",
+    "rte": "Core Influencer",
+    "poultry": "Core Influencer",
+    "bovine": "Peripheral/Local",
+    "swine": "Peripheral/Local",
+    "human": "Global Connector"
+  },
+  "baseline_metrics": {
+    "animal_feed": {
+      "degree": 0.3783783783783784,
+      "strength": 1.0,
+      "clustering": 0.2918931335800532,
+      "betweenness": 0.2972972972972973,
+      "closeness": 0.4450205446490034,
+      "eigenvector": 0.34841941243559205
+    },
+    "aquatic_animal": {
+      "degree": 0.05405405405405406,
+      "strength": 0.1394894894894895,
+      "clustering": 0.0,
+      "betweenness": 0.028528528528528527,
+      "closeness": 0.29478584846337663,
+      "eigenvector": 0.01917152019743359
+    },
+    "companion_animal": {
+      "degree": 0.2702702702702703,
+      "strength": 0.703003003003003,
+      "clustering": 0.47670400527153173,
+      "betweenness": 0.054804804804804805,
+      "closeness": 0.39486879957131155,
+      "eigenvector": 0.30133362526023927
+    },
+    "equine": {
+      "degree": 0.21621621621621623,
+      "strength": 0.5463963963963964,
+      "clustering": 0.3218624059571557,
+      "betweenness": 0.09309309309309309,
+      "closeness": 0.38544413106507525,
+      "eigenvector": 0.1698622868049546
+    },
+    "fruit_and_vegetable": {
+      "degree": 0.02702702702702703,
+      "strength": 0.07507507507507508,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.2471335279473588,
+      "eigenvector": 0.015272765859718528
+    },
+    "grains": {
+      "degree": 0.05405405405405406,
+      "strength": 0.12162162162162163,
+      "clustering": 0.8659618200769708,
+      "betweenness": 0.0,
+      "closeness": 0.26845752661722466,
+      "eigenvector": 0.03078261911329595
+    },
+    "herbs": {
+      "degree": 0.08108108108108109,
+      "strength": 0.16216216216216217,
+      "clustering": 0.5090243337511438,
+      "betweenness": 0.0,
+      "closeness": 0.2470978470228795,
+      "eigenvector": 0.0286342535707239
+    },
+    "nuts": {
+      "degree": 0.16216216216216217,
+      "strength": 0.4022522522522522,
+      "clustering": 0.36218684257486955,
+      "betweenness": 0.04204204204204204,
+      "closeness": 0.30486222652056016,
+      "eigenvector": 0.036581598514200675
+    },
+    "production_env_produce": {
+      "degree": 0.13513513513513514,
+      "strength": 0.2614114114114114,
+      "clustering": 0.45741225978781247,
+      "betweenness": 0.0,
+      "closeness": 0.2632969795185507,
+      "eigenvector": 0.0423011867267831
+    },
+    "soil_northeast": {
+      "degree": 0.10810810810810811,
+      "strength": 0.22357357357357355,
+      "clustering": 0.5397274239955006,
+      "betweenness": 0.0,
+      "closeness": 0.26904358511914583,
+      "eigenvector": 0.04289557644893033
+    },
+    "dairy": {
+      "degree": 0.02702702702702703,
+      "strength": 0.07507507507507508,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.03339118935449211,
+      "eigenvector": 1.489515197380946e-13
+    },
+    "food_production_env_pacific": {
+      "degree": 0.10810810810810811,
+      "strength": 0.3003003003003003,
+      "clustering": 0.8207612335563805,
+      "betweenness": 0.009009009009009009,
+      "closeness": 0.3391615879439761,
+      "eigenvector": 0.07248349675158351
+    },
+    "food_production_env_mountain": {
+      "degree": 0.16216216216216217,
+      "strength": 0.42867867867867865,
+      "clustering": 0.5032221571404293,
+      "betweenness": 0.0915915915915916,
+      "closeness": 0.3501063319630771,
+      "eigenvector": 0.08615328133575774
+    },
+    "food_production_env_southern_plains": {
+      "degree": 0.1891891891891892,
+      "strength": 0.4707207207207207,
+      "clustering": 0.6086688823864216,
+      "betweenness": 0.0075075075075075074,
+      "closeness": 0.317568211538015,
+      "eigenvector": 0.21298027264476688
+    },
+    "food_production_env_corn_belt": {
+      "degree": 0.13513513513513514,
+      "strength": 0.2957957957957958,
+      "clustering": 0.49353323312622843,
+      "betweenness": 0.013513513513513514,
+      "closeness": 0.31828872171771033,
+      "eigenvector": 0.12741031712995116
+    },
+    "food_production_env_northeast": {
+      "degree": 0.1891891891891892,
+      "strength": 0.40855855855855855,
+      "clustering": 0.36189552097677996,
+      "betweenness": 0.05855855855855856,
+      "closeness": 0.35427712828336,
+      "eigenvector": 0.1621387010854813
+    },
+    "food_production_env_appalachian": {
+      "degree": 0.1891891891891892,
+      "strength": 0.4297297297297297,
+      "clustering": 0.3463809402604974,
+      "betweenness": 0.1036036036036036,
+      "closeness": 0.3560382393097655,
+      "eigenvector": 0.08512601080073623
+    },
+    "food_production_env_na": {
+      "degree": 0.10810810810810811,
+      "strength": 0.27402402402402404,
+      "clustering": 0.9388648896016313,
+      "betweenness": 0.0,
+      "closeness": 0.2668469157853485,
+      "eigenvector": 0.12789967361522497
+    },
+    "food_production_env_southeast": {
+      "degree": 0.13513513513513514,
+      "strength": 0.3521021021021021,
+      "clustering": 0.762026305943104,
+      "betweenness": 0.0,
+      "closeness": 0.3350268240226352,
+      "eigenvector": 0.19464000320095085
+    },
+    "food_production_env_lake_states": {
+      "degree": 0.13513513513513514,
+      "strength": 0.2861861861861862,
+      "clustering": 0.33070402852335445,
+      "betweenness": 0.07057057057057058,
+      "closeness": 0.27523384458546735,
+      "eigenvector": 0.02278039063941338
+    },
+    "food_production_env_northern_plains": {
+      "degree": 0.05405405405405406,
+      "strength": 0.09159159159159161,
+      "clustering": 0.716933978762757,
+      "betweenness": 0.0,
+      "closeness": 0.19795316009900488,
+      "eigenvector": 0.004610572440111416
+    },
+    "water_northeast": {
+      "degree": 0.21621621621621623,
+      "strength": 0.5265765765765766,
+      "clustering": 0.30546305343294894,
+      "betweenness": 0.07807807807807808,
+      "closeness": 0.3431835621246057,
+      "eigenvector": 0.11638357805555126
+    },
+    "water_southeast": {
+      "degree": 0.02702702702702703,
+      "strength": 0.07057057057057056,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.02540540540540541,
+      "eigenvector": 5.087731701754897e-15
+    },
+    "water_pacific": {
+      "degree": 0.02702702702702703,
+      "strength": 0.06066066066066066,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.031108031108031106,
+      "eigenvector": 1.203528288314382e-13
+    },
+    "water_appalachian": {
+      "degree": 0.21621621621621623,
+      "strength": 0.5451951951951952,
+      "clustering": 0.3224448695946393,
+      "betweenness": 0.09009009009009009,
+      "closeness": 0.34173099303209703,
+      "eigenvector": 0.11721225777156323
+    },
+    "sewage_hi": {
+      "degree": 0.05405405405405406,
+      "strength": 0.09564564564564565,
+      "clustering": 0.0,
+      "betweenness": 0.046546546546546545,
+      "closeness": 0.20663688093128768,
+      "eigenvector": 0.005779879462158014
+    },
+    "water_northern_plains": {
+      "degree": 0.02702702702702703,
+      "strength": 0.04339339339339339,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.17949476524589886,
+      "eigenvector": 0.001715749707462848
+    },
+    "water_southern_plains": {
+      "degree": 0.02702702702702703,
+      "strength": 0.07402402402402403,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.26806552493745356,
+      "eigenvector": 0.021823140099623706
+    },
+    "water_na": {
+      "degree": 0.02702702702702703,
+      "strength": 0.056906906906906904,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.15829962608677414,
+      "eigenvector": 0.0005708807508632262
+    },
+    "forest": {
+      "degree": 0.02702702702702703,
+      "strength": 0.07057057057057056,
+      "clustering": 0.0,
+      "betweenness": 0.0,
+      "closeness": 0.02540540540540541,
+      "eigenvector": 5.087731701754897e-15
+    },
+    "multi_ingredient_other": {
+      "degree": 0.2972972972972973,
+      "strength": 0.79009009009009,
+      "clustering": 0.5356812546173892,
+      "betweenness": 0.03203203203203203,
+      "closeness": 0.3749413960894136,
+      "eigenvector": 0.34905984079084784
+    },
+    "multi_ingredient_poultry": {
+      "degree": 0.2702702702702703,
+      "strength": 0.6435435435435435,
+      "clustering": 0.48321464407850084,
+      "betweenness": 0.003003003003003003,
+      "closeness": 0.3160755505495372,
+      "eigenvector": 0.2793578376011573
+    },
+    "rodents": {
+      "degree": 0.1891891891891892,
+      "strength": 0.5112612612612613,
+      "clustering": 0.6957439191135878,
+      "betweenness": 0.015015015015015015,
+      "closeness": 0.3083393417545387,
+      "eigenvector": 0.23422169887069558
+    },
+    "rte": {
+      "degree": 0.1891891891891892,
+      "strength": 0.487987987987988,
+      "clustering": 0.7144334665400331,
+      "betweenness": 0.003003003003003003,
+      "closeness": 0.352674938014276,
+      "eigenvector": 0.25166464853829534
+    },
+    "poultry": {
+      "degree": 0.21621621621621623,
+      "strength": 0.5938438438438438,
+      "clustering": 0.6883161052869287,
+      "betweenness": 0.03203203203203204,
+      "closeness": 0.3646256443337556,
+      "eigenvector": 0.2975480803989074
+    },
+    "bovine": {
+      "degree": 0.05405405405405406,
+      "strength": 0.13573573573573575,
+      "clustering": 0.0,
+      "betweenness": 0.0015015015015015015,
+      "closeness": 0.04831380052618991,
+      "eigenvector": 1.9149767267519845e-13
+    },
+    "swine": {
+      "degree": 0.10810810810810811,
+      "strength": 0.28783783783783784,
+      "clustering": 0.654500232078527,
+      "betweenness": 0.0,
+      "closeness": 0.33158388069235656,
+      "eigenvector": 0.12586291113885656
+    },
+    "human": {
+      "degree": 0.35135135135135137,
+      "strength": 0.8896396396396395,
+      "clustering": 0.41755163680934687,
+      "betweenness": 0.07932932932932932,
+      "closeness": 0.4076254631145397,
+      "eigenvector": 0.3725216282658223
+    }
+  },
+  "order": [
+    "animal_feed",
+    "companion_animal",
+    "human",
+    "rodents",
+    "rte",
+    "multi_ingredient_other",
+    "multi_ingredient_poultry",
+    "food_production_env_southern_plains",
+    "food_production_env_southeast",
+    "poultry",
+    "equine",
+    "water_appalachian",
+    "water_northeast",
+    "food_production_env_mountain",
+    "food_production_env_northeast",
+    "food_production_env_appalachian",
+    "food_production_env_lake_states",
+    "nuts",
+    "aquatic_animal",
+    "food_production_env_pacific",
+    "food_production_env_corn_belt",
+    "food_production_env_na",
+    "sewage_hi",
+    "grains",
+    "fruit_and_vegetable",
+    "herbs",
+    "food_production_env_northern_plains",
+    "water_pacific",
+    "dairy",
+    "water_na",
+    "production_env_produce",
+    "soil_northeast",
+    "water_southeast",
+    "water_northern_plains",
+    "water_southern_plains",
+    "forest",
+    "bovine",
+    "swine"
+  ],
+  "node_labels": {
+    "animal_feed": "Animal Feed",
+    "aquatic_animal": "Aqua. Animals",
+    "companion_animal": "Comp. Animals",
+    "equine": "Equine",
+    "fruit_and_vegetable": "Fruits/Veges",
+    "grains": "Grains",
+    "herbs": "Herbs",
+    "nuts": "Nuts",
+    "production_env_produce": "FPE-Produce",
+    "soil_northeast": "Soil-NE",
+    "dairy": "Dairy",
+    "food_production_env_pacific": "FPE-PAC",
+    "food_production_env_mountain": "FPE-MTN",
+    "food_production_env_southern_plains": "FPE-SPLNS",
+    "food_production_env_corn_belt": "FPE-CB",
+    "food_production_env_northeast": "FPE-NE",
+    "food_production_env_appalachian": "FPE-APPAL",
+    "food_production_env_na": "FPE-N/A",
+    "food_production_env_southeast": "FPE-SE",
+    "food_production_env_lake_states": "FPE-LS",
+    "food_production_env_northern_plains": "FPE-NPLNS",
+    "water_northeast": "WTR-NE",
+    "water_southeast": "WTR-SE",
+    "water_pacific": "WTR-PAC",
+    "water_appalachian": "WTR-APPAL",
+    "sewage_hi": "Sewage-HI",
+    "water_northern_plains": "WTR-NPLNS",
+    "water_southern_plains": "WTR-SPLNS",
+    "water_na": "WTR-N/A",
+    "multi_ingredient_other": "MIF-Other",
+    "multi_ingredient_poultry": "MIF-Poultry",
+    "rodents": "Rodents",
+    "rte": "RTE",
+    "human": "Human",
+    "poultry": "Poultry",
+    "bovine": "Bovine",
+    "swine": "Swine",
+    "forest": "Forest"
+  },
+  "role_colors": {
+    "Global Connector": "#FB3640",
+    "Core Influencer": "#FDCA40",
+    "Broker/Bridge": "#542E71",
+    "Peripheral/Local": "#adb5bd"
+  },
+  "baseline_nodes": [
+    "animal_feed",
+    "aquatic_animal",
+    "companion_animal",
+    "equine",
+    "fruit_and_vegetable",
+    "grains",
+    "herbs",
+    "nuts",
+    "production_env_produce",
+    "soil_northeast",
+    "dairy",
+    "food_production_env_pacific",
+    "food_production_env_mountain",
+    "food_production_env_southern_plains",
+    "food_production_env_corn_belt",
+    "food_production_env_northeast",
+    "food_production_env_appalachian",
+    "food_production_env_na",
+    "food_production_env_southeast",
+    "food_production_env_lake_states",
+    "food_production_env_northern_plains",
+    "water_northeast",
+    "water_southeast",
+    "water_pacific",
+    "water_appalachian",
+    "sewage_hi",
+    "water_northern_plains",
+    "water_southern_plains",
+    "water_na",
+    "forest",
+    "multi_ingredient_other",
+    "multi_ingredient_poultry",
+    "rodents",
+    "rte",
+    "poultry",
+    "bovine",
+    "swine",
+    "human"
+  ],
+  "baseline_edges": [
+    [
+      "animal_feed",
+      "companion_animal",
+      1.0
+    ],
+    [
+      "animal_feed",
+      "equine",
+      0.976
+    ],
+    [
+      "animal_feed",
+      "food_production_env_pacific",
+      1.0
+    ],
+    [
+      "animal_feed",
+      "food_production_env_mountain",
+      1.0
+    ],
+    [
+      "animal_feed",
+      "food_production_env_southern_plains",
+      0.574
+    ],
+    [
+      "animal_feed",
+      "food_production_env_corn_belt",
+      0.818
+    ],
+    [
+      "animal_feed",
+      "food_production_env_northeast",
+      0.998
+    ],
+    [
+      "animal_feed",
+      "food_production_env_appalachian",
+      1.0
+    ],
+    [
+      "animal_feed",
+      "food_production_env_southeast",
+      1.0
+    ],
+    [
+      "animal_feed",
+      "multi_ingredient_other",
+      0.992
+    ],
+    [
+      "animal_feed",
+      "rte",
+      0.996
+    ],
+    [
+      "animal_feed",
+      "poultry",
+      1.0
+    ],
+    [
+      "animal_feed",
+      "swine",
+      1.0
+    ],
+    [
+      "animal_feed",
+      "human",
+      0.966
+    ],
+    [
+      "aquatic_animal",
+      "nuts",
+      0.866
+    ],
+    [
+      "aquatic_animal",
+      "water_northeast",
+      0.992
+    ],
+    [
+      "companion_animal",
+      "equine",
+      1.0
+    ],
+    [
+      "companion_animal",
+      "food_production_env_northeast",
+      0.9
+    ],
+    [
+      "companion_animal",
+      "water_northeast",
+      0.998
+    ],
+    [
+      "companion_animal",
+      "multi_ingredient_other",
+      1.0
+    ],
+    [
+      "companion_animal",
+      "multi_ingredient_poultry",
+      0.508
+    ],
+    [
+      "companion_animal",
+      "rte",
+      0.992
+    ],
+    [
+      "companion_animal",
+      "poultry",
+      1.0
+    ],
+    [
+      "companion_animal",
+      "swine",
+      0.966
+    ],
+    [
+      "companion_animal",
+      "human",
+      1.0
+    ],
+    [
+      "equine",
+      "grains",
+      0.892
+    ],
+    [
+      "equine",
+      "production_env_produce",
+      0.568
+    ],
+    [
+      "equine",
+      "water_northeast",
+      1.0
+    ],
+    [
+      "equine",
+      "water_appalachian",
+      0.856
+    ],
+    [
+      "equine",
+      "water_southern_plains",
+      0.986
+    ],
+    [
+      "equine",
+      "human",
+      1.0
+    ],
+    [
+      "fruit_and_vegetable",
+      "water_appalachian",
+      1.0
+    ],
+    [
+      "grains",
+      "water_northeast",
+      0.728
+    ],
+    [
+      "herbs",
+      "production_env_produce",
+      0.794
+    ],
+    [
+      "herbs",
+      "food_production_env_northeast",
+      0.58
+    ],
+    [
+      "herbs",
+      "water_appalachian",
+      0.786
+    ],
+    [
+      "nuts",
+      "food_production_env_pacific",
+      1.0
+    ],
+    [
+      "nuts",
+      "food_production_env_mountain",
+      1.0
+    ],
+    [
+      "nuts",
+      "food_production_env_appalachian",
+      0.942
+    ],
+    [
+      "nuts",
+      "food_production_env_lake_states",
+      1.0
+    ],
+    [
+      "nuts",
+      "food_production_env_northern_plains",
+      0.55
+    ],
+    [
+      "production_env_produce",
+      "soil_northeast",
+      0.57
+    ],
+    [
+      "production_env_produce",
+      "water_northeast",
+      0.848
+    ],
+    [
+      "production_env_produce",
+      "water_appalachian",
+      0.702
+    ],
+    [
+      "soil_northeast",
+      "food_production_env_northeast",
+      0.526
+    ],
+    [
+      "soil_northeast",
+      "water_northeast",
+      0.946
+    ],
+    [
+      "soil_northeast",
+      "water_appalachian",
+      0.936
+    ],
+    [
+      "dairy",
+      "bovine",
+      1.0
+    ],
+    [
+      "food_production_env_pacific",
+      "food_production_env_mountain",
+      1.0
+    ],
+    [
+      "food_production_env_pacific",
+      "food_production_env_appalachian",
+      1.0
+    ],
+    [
+      "food_production_env_mountain",
+      "food_production_env_appalachian",
+      0.842
+    ],
+    [
+      "food_production_env_mountain",
+      "food_production_env_lake_states",
+      1.0
+    ],
+    [
+      "food_production_env_mountain",
+      "swine",
+      0.868
+    ],
+    [
+      "food_production_env_southern_plains",
+      "food_production_env_corn_belt",
+      0.916
+    ],
+    [
+      "food_production_env_southern_plains",
+      "food_production_env_na",
+      0.86
+    ],
+    [
+      "food_production_env_southern_plains",
+      "multi_ingredient_other",
+      1.0
+    ],
+    [
+      "food_production_env_southern_plains",
+      "multi_ingredient_poultry",
+      0.982
+    ],
+    [
+      "food_production_env_southern_plains",
+      "rodents",
+      0.994
+    ],
+    [
+      "food_production_env_southern_plains",
+      "human",
+      0.944
+    ],
+    [
+      "food_production_env_corn_belt",
+      "food_production_env_appalachian",
+      0.86
+    ],
+    [
+      "food_production_env_corn_belt",
+      "multi_ingredient_other",
+      0.696
+    ],
+    [
+      "food_production_env_corn_belt",
+      "multi_ingredient_poultry",
+      0.65
+    ],
+    [
+      "food_production_env_northeast",
+      "water_appalachian",
+      0.992
+    ],
+    [
+      "food_production_env_northeast",
+      "poultry",
+      0.916
+    ],
+    [
+      "food_production_env_northeast",
+      "human",
+      0.53
+    ],
+    [
+      "food_production_env_appalachian",
+      "food_production_env_lake_states",
+      0.564
+    ],
+    [
+      "food_production_env_appalachian",
+      "sewage_hi",
+      0.516
+    ],
+    [
+      "food_production_env_na",
+      "multi_ingredient_other",
+      0.914
+    ],
+    [
+      "food_production_env_na",
+      "multi_ingredient_poultry",
+      0.886
+    ],
+    [
+      "food_production_env_na",
+      "rodents",
+      0.99
+    ],
+    [
+      "food_production_env_southeast",
+      "multi_ingredient_other",
+      0.946
+    ],
+    [
+      "food_production_env_southeast",
+      "multi_ingredient_poultry",
+      0.996
+    ],
+    [
+      "food_production_env_southeast",
+      "rodents",
+      0.826
+    ],
+    [
+      "food_production_env_southeast",
+      "human",
+      0.922
+    ],
+    [
+      "food_production_env_lake_states",
+      "food_production_env_northern_plains",
+      0.67
+    ],
+    [
+      "food_production_env_lake_states",
+      "water_northern_plains",
+      0.578
+    ],
+    [
+      "water_northeast",
+      "water_appalachian",
+      0.998
+    ],
+    [
+      "water_northeast",
+      "human",
+      0.504
+    ],
+    [
+      "water_southeast",
+      "forest",
+      0.94
+    ],
+    [
+      "water_pacific",
+      "bovine",
+      0.808
+    ],
+    [
+      "water_appalachian",
+      "human",
+      0.992
+    ],
+    [
+      "sewage_hi",
+      "water_na",
+      0.758
+    ],
+    [
+      "multi_ingredient_other",
+      "multi_ingredient_poultry",
+      1.0
+    ],
+    [
+      "multi_ingredient_other",
+      "rodents",
+      1.0
+    ],
+    [
+      "multi_ingredient_other",
+      "rte",
+      0.976
+    ],
+    [
+      "multi_ingredient_other",
+      "poultry",
+      1.0
+    ],
+    [
+      "multi_ingredient_other",
+      "human",
+      1.0
+    ],
+    [
+      "multi_ingredient_poultry",
+      "rodents",
+      1.0
+    ],
+    [
+      "multi_ingredient_poultry",
+      "rte",
+      0.55
+    ],
+    [
+      "multi_ingredient_poultry",
+      "poultry",
+      1.0
+    ],
+    [
+      "multi_ingredient_poultry",
+      "human",
+      1.0
+    ],
+    [
+      "rodents",
+      "poultry",
+      1.0
+    ],
+    [
+      "rodents",
+      "human",
+      1.0
+    ],
+    [
+      "rte",
+      "poultry",
+      0.994
+    ],
+    [
+      "rte",
+      "swine",
+      1.0
+    ],
+    [
+      "rte",
+      "human",
+      0.992
+    ],
+    [
+      "poultry",
+      "human",
+      1.0
+    ]
+  ],
+  "roles": [
+    "Global Connector",
+    "Broker/Bridge",
+    "Core Influencer",
+    "Peripheral/Local",
+    "Not retained"
+  ],
+  "metrics": [
+    "eigenvector",
+    "betweenness",
+    "degree",
+    "strength",
+    "closeness",
+    "clustering"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "description": "Complete pre-filter network input; no DM sampling data or parameters.",
+  "sources": {
+    "/Users/xdeng/projects/S1HS/S1HS_analysis/centrality_role_stability.ipynb": "ae37a7f712f28300b75bfedb49ff79c09cac4160e8cc769ba8634d7888b6093f",
+    "/Users/xdeng/.codex/visualizations/2026/08/19/01a01bb1-8654-7e12-908a-e40d514860d8/fig4b-investigation/stability_independent_sensitivity.ipynb": "e36ed48475e8bdce225e0a94a3c181631ff7f5435ad1e436e7c69be182596c6c",
+    "/Users/xdeng/.codex/visualizations/2026/08/19/01a01bb1-8654-7e12-908a-e40d514860d8/fig4b-investigation/stability_independent_report.ipynb": "aceb55af60c5ef2b0fcd4dea971387e5d71a1a3a8b3f6679ef881f9af4a75f3c",
+    "/Users/xdeng/projects/S1HS/S1HS_analysis/data/df_concatenated_all_042526_same_rows.csv": "1dfa8c2f4388083e9ce97944b9259f4b0f388fcd3b5daeb345f3ba6057db2fb1",
+    "/Users/xdeng/projects/S1HS/submission/Nature_microbiology/S1HS MS_100726_main.docx": "7f735f6456251ab9b06843fac473fe41db306e45a21f353412dbc18ac7568813",
+    "/Users/xdeng/projects/S1HS/submission/Nature_microbiology/Supplementary information_100726.docx": "feb0809b8a6cbe0511e6d975bd8c088f949e8f3ad324ade4da8993a1c489211a"
+  },
+  "files": {
+    "prepared_isolates.csv.gz": "137d3212323a66493cd9531df17f7d91ab2c937d15e65e5059facc64a3f80a10",
+    "original_figure4.png": "3217f15d8fd480700334f3fce4dc5d0bd64b21ba1eb69ef63d459cc96c2f7d1b",
+    "metadata.json": "f6e0d46f1f246d096c47537f026fbf675883eba1b540bbf35f188887e5bf5157",
+    "hc50_mapping.csv": "c3b32a827676369b3390075e41e9172b8f86de78c87ae4a944fd4d61b6f215ee",
+    "ordered_vectors.npz": "456a01265704c795f84a877c65358aa7af1ae7f31e34e96d3e43aba1308165dd"
+  }
+}
